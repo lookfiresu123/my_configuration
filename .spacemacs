@@ -341,6 +341,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Bind clang-format-region to C-M-tab in all modes:
   (global-set-key [C-M-tab] 'clang-format-region)
+  (global-linum-mode)
   ;; Bind clang-format-buffer to tab on the c++-mode only:
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
