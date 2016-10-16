@@ -1,2 +1,2 @@
 # my_spacemacs
-my configure of spacemacs
+My configuration of spacemacs
