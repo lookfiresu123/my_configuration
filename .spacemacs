@@ -44,6 +44,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -57,7 +58,11 @@ values."
      imenu-list
      emacs-lisp
      git
-     markdown
+     (markdown :variables
+               markdown-live-preview-engine 'vmd)
+     markdown-html
+     impatient-mode
+     markdown-toc-generate-toc
      org
      (shell :variables
            shell-default-height 30
@@ -75,6 +80,9 @@ values."
      gtags
      yaml
      php
+     bibtex
+     fcitx
+     company-emoji
      (go :variables
          go-use-gometalinter t
          go-tab-width 4)
@@ -347,6 +355,12 @@ you should place your code here."
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
   )
+  (setq org-ref-default-bibliography '("~/Papers/references.bib")
+      org-ref-pdf-directory "~/Papers/"
+            org-ref-bibliography-notes "~/Papers/notes.org")
+  (setq org-ref-open-pdf-function
+      (lambda (fpath)
+        (start-process "zathura" "*helm-bibtex-zathura*" "/usr/bin/zathura" fpath)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
